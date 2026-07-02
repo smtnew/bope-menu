@@ -74,20 +74,15 @@
     padding: 5rem 2rem 4rem;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
   }
-  .hero-bg-text {
+  .hero-video-overlay {
     position: absolute;
-    font-family: 'Fraunces', serif;
-    font-size: clamp(120px, 25vw, 280px);
-    color: rgba(255,255,255,0.03);
-    font-weight: 300;
-    letter-spacing: -0.04em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(26,10,0,0.68), rgba(26,10,0,0.82)),
+      radial-gradient(ellipse at 50% 10%, rgba(61,26,0,0.4), transparent 65%);
   }
   .hero-inner { position: relative; max-width: 680px; }
   .hero-eyebrow {
@@ -274,13 +269,7 @@
 
   .menu-note { font-size: 12px; color: var(--text-muted); margin-top: 1.25rem; }
 
-  /* MENIU CU VIDEO PE FUNDAL */
-  .menu-video-section {
-    position: relative;
-    padding: 5rem 0;
-    overflow: hidden;
-    isolation: isolate;
-  }
+  /* VIDEO FUNDAL (hero) */
   .bg-video {
     position: absolute;
     inset: 0;
@@ -289,31 +278,6 @@
     object-fit: cover;
     z-index: -2;
   }
-  .menu-video-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-      linear-gradient(rgba(26,10,0,0.72), rgba(26,10,0,0.82)),
-      radial-gradient(ellipse at 30% 20%, rgba(61,26,0,0.5), transparent 60%);
-  }
-  .menu-video-content { position: relative; }
-
-  .eyebrow-light { color: var(--yellow); }
-  .serif-light { color: #fff; }
-  .serif-light em { color: var(--yellow); }
-  .lead-light { color: rgba(255,255,255,0.72); }
-  .menu-note-light { color: rgba(255,255,255,0.5); }
-
-  .menu-item.glass {
-    background: rgba(255,255,255,0.08);
-    border: 0.5px solid rgba(255,255,255,0.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .menu-item.glass:hover { border-color: rgba(245,197,24,0.5); background: rgba(255,255,255,0.12); }
-  .menu-item.glass .item-name { color: #fff; }
-  .menu-item.glass .item-ing { color: rgba(255,255,255,0.65); }
 
   /* PRICE HERO */
   .price-hero {
@@ -491,26 +455,29 @@
 
 <nav>
   <a class="nav-logo" href="#">🍕 Bope Pop-up Pizza</a>
-  <a class="nav-cta" href="#rezerva">Rezervă o dată</a>
+  <a class="nav-cta" href="#rezerva">Rezervă data</a>
 </nav>
 
-<!-- HERO -->
+<!-- HERO CU VIDEO PE FUNDAL -->
 <section class="hero">
-  <div class="hero-bg-text">Pizza</div>
+  <video class="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="bope-pizza-live.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Disponibil la evenimentul tău</div>
-    <h1>Pizza <em>autentică</em>,<br>gătită live</h1>
+    <div class="hero-eyebrow">Disponibil pentru evenimentul tău</div>
+    <h1>Pizza <em>napoletană</em> autentică,<br>gătită live în fața invitaților</h1>
     <p class="hero-subtitle">
-      Cuptor profesional Gozney Arc XL, ingrediente atente, aluat maturat 48h.
-      Vin la tine acasă, la birou sau în comunitate.
+      Cuptor profesional Gozney Arc XL, ingrediente atent alese și aluat maturat 48h.
+      Venim la tine acasă, la birou sau oriunde în comunitate.
     </p>
     <div class="hero-actions">
-      <a class="btn-hero" href="#rezerva">Rezervă o dată</a>
+      <a class="btn-hero" href="#rezerva">Rezervă data</a>
       <a class="btn-ghost" href="#meniu">Vezi meniul</a>
     </div>
     <div class="hero-cause-strip">
       <span class="cause-heart">♥</span>
-      <span>Fiecare eveniment susține copiii din comunitățile rurale ale Something New</span>
+      <span>Fiecare eveniment susține copiii din comunitățile rurale Something New</span>
     </div>
   </div>
 </section>
@@ -519,20 +486,20 @@
 <section class="section">
   <div class="wrap">
     <span class="eyebrow">Despre Bope Pop-up</span>
-    <h2 class="serif">Pizza cu scop, <em>la tine acasă sau la birou</em></h2>
+    <h2 class="serif">Pizza cu impact <em>la tine acasă, la birou sau în comunitate</em></h2>
     <p class="lead">
-      Bope Pop-up Pizza aduce experiența cafenelei Bope direct acasă la tine sau la evenimentele din comunitate.
-      Nu pizza la cutie — ci pizza gătită în fața ta, cu aluat lucrat cu mâna, tomate San Marzano și cuptor profesional.
-      Și cu fiecare eveniment, susții programele educaționale ale asociației Something New.
+      Bope Pop-up Pizza aduce experiența Bope Coffee direct la evenimentul tău, acasă, la birou sau în comunitate.
+      Nu pizza la cutie, ci pizza napoletană gătită live, cu aluat frământat manual, tomate San Marzano și cuptor profesional Gozney.
+      Și prin fiecare eveniment, susții programele educaționale ale Something New.
     </p>
     <div class="oven-highlight">
       <div class="oven-icon-box">🔥</div>
       <div>
         <p class="oven-title">Gozney Arc XL — cuptor profesional portabil</p>
         <p class="oven-desc">
-          Funcționează pe propan și atinge peste 500°C. Pizza napoletană autentică,
-          coaptă în 60–90 de secunde, cu acea crustă aerată și ușor crocantă pe care nu o poți obține
-          într-un cuptor obișnuit. Îl aducem noi — tu alegi locul.
+          Funcționează pe propan și ajunge la peste 500°C. Pizza napoletană autentică,
+          coaptă în 60–90 de secunde, cu crustă aerată și crocantă, imposibil de obținut
+          într-un cuptor obișnuit. Îl aducem noi. Tu alegi locul.
         </p>
         <span class="oven-badge">500°C · 60 secunde per pizza</span>
       </div>
@@ -540,45 +507,41 @@
   </div>
 </section>
 
-<!-- MENIU CU VIDEO PE FUNDAL -->
-<section class="menu-video-section" id="meniu">
-  <video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="bope-pizza-live.mp4" type="video/mp4">
-  </video>
-  <div class="menu-video-overlay"></div>
-  <div class="wrap menu-video-content">
-    <span class="eyebrow eyebrow-light">Sortimente · gătite live</span>
-    <h2 class="serif serif-light">Ce gătim <em>pentru tine</em></h2>
-    <p class="lead lead-light">Aluat maturat 48h, tomate San Marzano, mozzarella fior di latte. Fiecare pizza e întinsă și coaptă în fața ta — iată câteva dintre preferatele noastre.</p>
+<!-- MENIU -->
+<section class="section" id="meniu">
+  <div class="wrap">
+    <span class="eyebrow">Sortimente gătite live</span>
+    <h2 class="serif">Ce gătim <em>pentru tine</em></h2>
+    <p class="lead">Aluat maturat 48h, tomate San Marzano, mozzarella fior di latte. Fiecare pizza este întinsă și coaptă în fața ta. Iată câteva dintre preferatele noastre:</p>
 
     <div class="menu-grid">
-      <div class="menu-item glass">
+      <div class="menu-item">
         <span class="item-tag tag-c">Clasic</span>
         <p class="item-name">Margherita</p>
         <p class="item-ing">Sos roșii San Marzano, mozzarella fior di latte, busuioc proaspăt</p>
       </div>
-      <div class="menu-item glass">
+      <div class="menu-item">
         <span class="item-tag tag-s">Picantă</span>
         <p class="item-name">Picante</p>
         <p class="item-ing">Sos roșii, mozzarella, salam picant, ardei iute, oregano</p>
       </div>
-      <div class="menu-item glass">
+      <div class="menu-item">
         <span class="item-tag tag-s">Brânzeturi</span>
         <p class="item-name">Formaggi</p>
         <p class="item-ing">Mozzarella, gorgonzola, parmezan, un strop de miere</p>
       </div>
-      <div class="menu-item glass">
+      <div class="menu-item">
         <span class="item-tag tag-s">Specială</span>
         <p class="item-name">Crudo</p>
         <p class="item-ing">Sos roșii, mozzarella, prosciutto crudo, rucola, fulgi de parmezan</p>
       </div>
-      <div class="menu-item glass">
+      <div class="menu-item">
         <span class="item-tag tag-v">Pentru copii</span>
         <p class="item-name">Kids</p>
-        <p class="item-ing">Blat pufos, sos roșii dulceag și mozzarella — preferata celor mici</p>
+        <p class="item-ing">Blat pufos, sos roșii dulceag și mozzarella, preferata celor mici</p>
       </div>
     </div>
-    <p class="menu-note menu-note-light">* Sortimentele se pot personaliza în funcție de eveniment. Meniul final îl stabilim împreună la comandă.</p>
+    <p class="menu-note">* Meniul final se personalizează în funcție de eveniment.</p>
   </div>
 </section>
 
@@ -586,25 +549,25 @@
 <section class="section" id="pachete">
   <div class="wrap">
     <span class="eyebrow">Preț & pachete</span>
-    <h2 class="serif">Un preț <em>simplu</em>, totul inclus</h2>
-    <p class="lead">Fără costuri ascunse. Un tarif unic per persoană, cu pizza proaspătă gătită live, echipament, chef și curățenie incluse.</p>
+    <h2 class="serif">Un preț <em>simplu</em>, totul inclus, fără costuri ascunse</h2>
+    <p class="lead">Un tarif unic per persoană, cu pizza proaspătă gătită live, echipament, chef și curățenie incluse.</p>
 
     <div class="price-hero">
       <div class="price-big">85 <span>lei</span></div>
-      <div class="price-per">de persoană</div>
-      <p class="price-note">Pizza proaspătă gătită live · cuptor profesional · chef & echipă · montaj și curățenie incluse</p>
+      <div class="price-per">/ persoană</div>
+      <p class="price-note">Pizza proaspătă gătită live · cuptor profesional · chef și echipă · montaj și curățenie incluse</p>
     </div>
 
     <div class="pkg-grid">
       <div class="pkg-card featured">
         <span class="pkg-pop">Cel mai popular</span>
-        <p class="pkg-name">Eveniment</p>
-        <p class="pkg-desc">Petreceri private, aniversări, botezuri sau evenimente de companie. Meniu personalizat și chef live pe toată durata.</p>
+        <p class="pkg-name">Eveniment privat</p>
+        <p class="pkg-desc">Petreceri, aniversări, botezuri, evenimente corporate. Meniu personalizat și chef live pe toată durata.</p>
         <p class="pkg-price">85 lei / persoană</p>
       </div>
       <div class="pkg-card">
-        <p class="pkg-name">Corporativ &amp; comunitate</p>
-        <p class="pkg-desc">Team building, ziua companiei, festival comunitar sau acțiune de strângere de fonduri.</p>
+        <p class="pkg-name">Corporate &amp; comunitate</p>
+        <p class="pkg-desc">Team building, ziua companiei, festival comunitar, fundraising.</p>
         <p class="pkg-price">Ofertă personalizată</p>
       </div>
     </div>
